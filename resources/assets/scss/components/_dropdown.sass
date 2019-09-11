@@ -1,0 +1,155 @@
+// Name:            Dropdown
+// Description:     Component to create dropdown menus
+//
+// Component:       `uis-dropdown`
+//
+// Adopted:         `uis-dropdown-nav`
+//
+// Modifiers:       `uis-dropdown-top-*`
+//                  `uis-dropdown-bottom-*`
+//                  `uis-dropdown-left-*`
+//                  `uis-dropdown-right-*`
+//                  `uis-dropdown-stack`
+//                  `uis-dropdown-grid`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$dropdown-z-index:                                  $global-z-index - 10 !default
+$dropdown-min-width:                                200px !default
+$dropdown-padding:                                  25px !default
+$dropdown-background:                               $global-muted-background !default
+$dropdown-color:                                    $global-color !default
+$dropdown-margin:                                   $global-small-margin !default
+
+$dropdown-nav-item-color:                           $global-muted-color !default
+$dropdown-nav-item-hover-color:                     $global-color !default
+$dropdown-nav-header-color:                         $global-emphasis-color !default
+$dropdown-nav-divider-border-width:                 0.5px !default
+$dropdown-nav-divider-border:                       #E5E5E5 !default
+$dropdown-nav-sublist-item-color:                   $global-muted-color !default
+$dropdown-nav-sublist-item-hover-color:             $global-color !default
+
+$dropdown-box-shadow:                               $global-medium-box-shadow !default
+
+
+
+/* ==================================================
+    Component: Dropdown
+   ================================================== */  
+
+/*
+ * 1. Hide by default
+ * 2. Set position
+ * 3. Set a default width
+ * 4. Style
+ */
+
+.uis-dropdown
+    /* 1 */
+    display: none
+    /* 2 */
+    position: absolute
+    z-index: $dropdown-z-index
+    /* 3 */
+    box-sizing: border-box
+    min-width: $dropdown-min-width
+    /* 4 */
+    padding: $dropdown-padding
+    background: $dropdown-background
+    color: $dropdown-color
+    box-shadow: $dropdown-box-shadow
+
+
+/* Dropdown area */
+.uis-dropdown-area
+    position: relative
+    overflow: visible
+
+.uis-dropdown-area-width-medium
+    width: 200px
+
+
+/* Show */
+.uis-dropdown.uis-open
+    display: block
+
+/* Nav
+ * Adopts `uis-nav`
+   ================================================== */
+
+.uis-dropdown-nav
+    white-space: nowrap
+
+/*
+ * Items
+ */
+
+.uis-dropdown-nav > li > a 
+    color: $dropdown-nav-item-color
+
+/* Hover + Focus + Active */
+.uis-dropdown-nav > li > a:hover,
+.uis-dropdown-nav > li > a:focus,
+.uis-dropdown-nav > li.uis-active > a
+    color: $dropdown-nav-item-hover-color
+
+/*
+ * Header
+ */
+
+.uis-dropdown-nav .uis-nav-header
+    color: $dropdown-nav-header-color
+
+/*
+ * Divider
+ */
+
+.uis-dropdown-nav .uis-nav-divider
+    border-top: $dropdown-nav-divider-border-width solid $dropdown-nav-divider-border
+
+/*
+ * Sublists
+ */
+
+.uis-dropdown-nav .uis-nav-sub a
+    color: $dropdown-nav-sublist-item-color !important
+
+.uis-dropdown-nav .uis-nav-sub a:hover,
+.uis-dropdown-nav .uis-nav-sub a:focus
+    color: $dropdown-nav-sublist-item-hover-color !important
+
+
+
+/* Direction / Alignment modifiers
+   ================================================== */
+
+/* Direction */
+[class*='uis-dropdown-top']
+    margin-top: (-$dropdown-margin)
+
+[class*='uis-dropdown-bottom']
+    margin-top: $dropdown-margin
+
+[class*='uis-dropdown-left']
+    margin-left: (-$dropdown-margin)
+
+[class*='uis-dropdown-right']
+    margin-left: $dropdown-margin
+
+.uis-dropdown-right
+    right: 0
+
+.uis-dropdown-left
+    left: 0
+
+
+
+/* Chatbot
+   ================================================== */
+
+.uis-dropdown-stack .uis-dropdown-grid > *
+    width: 100% !important

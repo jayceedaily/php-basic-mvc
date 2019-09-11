@@ -1,0 +1,122 @@
+// Name:            Accordion
+// Description:     Component to create accordions
+//
+// Component:       `uis-accordion`
+//
+// Sub-objects:     `uis-accordion-title`
+//                  `uis-accordion-content`
+//
+// States:          `uis-open`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$accordion-item-margin-top:                     $global-margin !default
+
+$accordion-title-font-size:                     $global-medium-font-size !default
+$accordion-title-line-height:                   1.4 !default
+$accordion-title-color:                         $global-emphasis-color !default
+$accordion-title-hover-color:                   $global-color !default
+
+$accordion-content-margin-top:                  $global-margin !default
+
+$accordion-border-width:                        0.235px !default
+$accordion-border-color:                        #E5E5E5 !default
+
+$accordion-default-background:                  $global-inverse-color !default
+$accordion-default-box-shadow:                  $global-small-box-shadow !default
+$accordion-default-padding:                     $global-gutter !default
+
+
+
+/* ==================================================
+  Component: Accordion
+ ================================================== */
+
+.uis-accordion
+    padding: 0
+    list-style: none
+
+
+
+/* Item
+   ================================================== */
+
+.uis-accordion > :nth-child(n+2)
+    margin-top: $accordion-item-margin-top
+
+
+
+/* Title
+   ================================================== */
+
+.uis-accordion-title
+    display: block
+    font-size: $accordion-title-font-size
+    line-height: $accordion-title-line-height
+    color: $accordion-title-color !important
+    overflow: hidden
+
+    i
+        float: right
+        margin-top: 8px
+
+        transition: all 0.3s ease
+
+    i.accordion-icon-rotate
+        transform: rotateZ(-180deg)
+
+/* Hover + Focus */
+.uis-accordion-title:hover,
+.uis-accordion-title:focus
+    color: $accordion-title-hover-color !important
+    text-decoration: none
+    outline: none
+
+
+
+/* Content
+   ================================================== */
+
+.uis-accordion-content
+    display: none
+    margin-top: $accordion-content-margin-top
+
+.uis-accordion-content.uis-open
+    display: block
+
+/*
+ * Micro clearfix
+ */
+
+.uis-accordion-content::before,
+.uis-accordion-content::after
+    content: ""
+    display: table
+
+.uis-accordion::after
+    clear: both
+
+/*
+ * Remove margin from the last-child
+ */
+
+.uis-accordion-content > :last-child
+    margin-bottom: 0
+
+
+/* Stlye modifier
+   ================================================== */
+
+.uis-accordion-border > li,
+    border-style: solid
+    border-width: $accordion-border-width
+    border-color: $accordion-border-color
+
+.uis-accordion-default > li
+    background-color: $accordion-default-background
+    padding: $accordion-default-padding
+    box-shadow: $accordion-default-box-shadow

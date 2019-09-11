@@ -1,0 +1,147 @@
+// Name:            Link
+// Description:     Styles for links
+//
+// Component:       `uis-link-muted`
+//                  `uis-link-primary
+//                  `uis-link-success`
+//                  `uis-link-warning`
+//                  `uis-link-danger`
+//                  `uis-link-text`
+//                  `uis-link-heading`
+//                  `uis-link-reset`
+//
+// ========================================================================
+
+// Variables
+// ========================================================================
+
+$link-muted-color:                      $global-muted-color !default
+$link-muted-hover-color:                $global-color !default
+
+$link-text-hover-color:                 $global-muted-color !default
+
+$link-heading-hover-color:              $global-primary-background !default
+$link-heading-hover-text-decoration:    none !default
+
+$link-primary-color:                    lighten($global-primary-background, 5%) !default
+$link-primary-hover-color:              darken($global-primary-background, 10%) !default
+
+$link-success-color:                    lighten($global-success-background, 5%) !default
+$link-success-hover-color:              darken($global-success-background, 10%) !default
+
+$link-warning-color:                    lighten($global-warning-background, 5%) !default
+$link-warning-hover-color:              darken($global-warning-background, 10%) !default
+
+$link-danger-color:                     lighten($global-danger-background, 5%) !default
+$link-danger-hover-color:               darken($global-danger-background, 10%) !default
+
+
+
+/* ==================================================
+    Component: Link
+   ================================================== */    
+
+
+/* Muted
+   ================================================== */
+
+a.uis-link-muted,
+.uis-link-muted a
+    color: $link-muted-color !important
+
+a.uis-link-muted:hover,
+.uis-link-muted a:hover
+    color: $link-muted-hover-color !important
+
+
+
+/* Primary
+   ================================================== */
+
+a.uis-link-primary,
+.uis-link-primary a
+    color: $link-primary-color !important
+
+a.uis-link-primary:hover,
+.uis-link-primary a:hover
+    color: $link-primary-hover-color !important
+
+
+
+/* Success
+   ================================================== */
+
+a.uis-link-success,
+.uis-link-success a
+    color: $link-success-color !important
+
+a.uis-link-success:hover,
+.uis-link-success a:hover
+    color: $link-success-hover-color !important
+
+
+
+/* Warning
+   ================================================== */
+
+a.uis-link-warning,
+.uis-link-warning a
+    color: $link-warning-color !important
+
+a.uis-link-warning:hover,
+.uis-link-warning a:hover
+    color: $link-warning-hover-color !important
+
+
+/* Danger
+   ================================================== */
+
+a.uis-link-danger,
+.uis-link-danger a
+    color: $link-danger-color !important
+
+a.uis-link-danger:hover,
+.uis-link-danger a:hover
+    color: $link-danger-hover-color !important
+
+
+
+/* Text
+   ================================================== */
+
+a.uis-link-text:not(:hover),
+.uis-link-text a:not(:hover)
+    color: inherit
+
+a.uis-link-text:hover,
+.uis-link-text a:hover
+    color: $link-text-hover-color
+
+
+
+/* Heading
+   ================================================== */
+
+a.uis-link-heading:not(:hover),
+.uis-link-heading a:not(:hover)
+    color: inherit
+
+
+a.uis-link-heading:hover,
+.uis-link-heading a:hover
+    color: $link-heading-hover-color
+    text-decoration: $link-heading-hover-text-decoration
+
+/* Reset
+   ================================================== */
+
+/*
+ * `!important` needed to override inverse component
+ */
+
+a.uis-link-reset,
+a.uis-link-reset:hover,
+.uis-link-reset a,
+.uis-link-reset a:hover
+    color: inherit !important
+    text-decoration: none !important

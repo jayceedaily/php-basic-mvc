@@ -1,0 +1,347 @@
+// Name:            Navbar
+// Description:     Component to create horizontal navigation bars
+//
+// Component:       `uis-navbar`
+//
+// Sub-objects:     `navbar-container`
+//                  `navbar-left`
+//                  `navbar-right`
+//                  `navbar-center`
+//
+// Adopted:         `uis-navbar-dropdown` + Modifiers
+//                  `uis-navbar-dropdown-nav`
+//                  `uis-navbar-dropdown-grid`
+//                  `uis-navbar-toggle-icon`
+//
+// Modifiers:       `uis-navbar-sticky`
+//
+// States:          `uis-active`
+//                  `uis-parent`
+//                  `uis-open`
+//
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$navbar-background:                         $global-inverse-color !default
+$navbar-color-mode:                         none !default
+
+$navbar-nav-item-height:                    80px !default
+$navbar-nav-item-padding-horizontal:        15px !default
+$navbar-nav-item-color:                     $global-muted-color !default
+$navbar-nav-item-font-size:                 $global-font-size !default
+$navbar-nav-item-font-family:               $global-font-family !default
+$navbar-nav-item-hover-color:               $global-primary-color !default
+$navbar-nav-item-onclick-color:             $global-primary-color !default
+$navbar-nav-item-active-color:              $global-primary-color !default
+$navbar-sticky-z-index:                     $global-z-index + 10 !default
+
+$navbar-item-color:                         $global-color !default
+
+$navbar-toggle-color:                       $global-muted-color !default
+$navbar-toggle-hover-color:                 $global-color !default
+
+$navbar-box-shadow:                         0px 0px 20px #ccc !default
+
+$navbar-dropdown-z-index:                   $global-z-index + 20 !default
+$navbar-dropdown-width:                     250px !default
+$navbar-dropdown-margin:                    0 !default
+$navbar-dropdown-padding:                   25px !default
+$navbar-dropdown-background:                $global-background !default
+$navbar-dropdown-color:                     $global-color !default
+$navbar-dropdown-grid-gutter-horizontal:    $global-gutter!default
+$navbar-dropdown-grid-gutter-vertical:      $navbar-dropdown-grid-gutter-horizontal !default
+
+$navbar-dropdown-box-shadow:                $global-medium-box-shadow !default
+
+
+
+/* ==================================================
+    Component: Navbar
+   ================================================== */
+
+
+/*
+ * 1. Create position context to center navbar group
+ */
+
+.uis-navbar
+    display: flex
+    /* 1 */
+    position: relative
+
+
+/* Container
+   ================================================== */
+
+.uis-navbar-container
+    background-color: $navbar-background
+    box-shadow: $navbar-box-shadow
+    width: 100%
+
+/* Groups
+   ================================================== */
+
+.uis-navbar-left,
+.uis-navbar-right,
+.uis-navbar-center,
+.uis-navbar-center-left > *,
+.uis-navbar-center-right > *
+    display: flex
+    /* 1 */
+    align-items: center
+
+.uis-navbar-left,
+.uis-navbar-right,
+.uis-navb-center
+    flex: wrap
+
+
+/*
+ * Horizontal alignment
+ * 1. Create position context for navbar with sub groups (left/right)
+ * 2. Needed for dropdowns because a new position context is created
+ * `z-index` must be smaller than off-canvas
+ * 3. Fix text wrapping if the centered section is larger than 50% of the navbar
+ * 4.align sub groups for centered navbar
+ */
+
+.uis-navbar-right
+    margin-left: auto
+
+.uis-navbar-center:only-child
+    margin-left: auto
+    margin-right: auto
+    /* 1 */
+    position: relative
+
+.uis-navbar-center:not(:only-child)
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    /* 2 */
+    z-index: $global-z-index - 10
+
+/* 3 */
+.uis-navbar-center:not(:only-child) .uis-navbar-nav > li > a,
+.uis-navbar-center:not(:only-child) .uis-navbar-item,
+.uis-navbar-center:not(:only-child) .uis-navbar-toggle
+    white-space: nowrap
+
+/* 4 */
+.uis-navbar-center-left,
+.uis-navbar-center-right
+    position: absolute
+    top: 0
+
+.uis-navbar-center-left,
+.uis-navbar-center-right
+    right: 100%
+    top: 0
+
+.uis-navbar-center-left
+    right: 100%
+
+.uis-navbar-center-right
+    left: 100%
+
+[class*='uis-navbar-center-'] .uis-navbar-nav > li > a,
+[class*='uis-navbar-center-'] .uis-navbar-item,
+[class*='uis-navbar-center-'] .uis-navbar-toggle
+    white-space: nowrap
+
+
+
+/* Nav
+   ================================================== */
+
+/*
+ * 1. Reset list
+ */
+
+.uis-navbar-nav
+    display: flex
+    /* 1 */
+    margin: 0
+    padding: 0
+    list-style: none
+
+/*
+ * Allow items to wrap into the next line
+ * Only not `absolute` positioned groups
+ */
+
+.uis-navbar-left,
+.uis-navbar-right,
+.uis-navbar-center:only-child
+    flex-wrap: wrap
+
+/*
+ * Items
+ * 1. Center content verticall and horizontally
+ * 2. Dimensions
+ * 3. Style
+ * 4. Required for `a`
+ */
+
+.uis-navbar-nav > .uis-navbar-nav-item > a, // Nav item
+.uis-navbar-item,                           // content item
+.uis-navbar-toggle                          // Clickable item
+    /* 1 */
+    display: flex
+    justify-content: center
+    align-items: center
+    /* 2 */
+    box-sizing: border-box
+    height: $navbar-nav-item-height
+    padding: 0 $navbar-nav-item-padding-horizontal
+    /* 3 */
+    font-size: $navbar-nav-item-font-size
+    font-family: $navbar-nav-item-font-family
+    /* 4 */
+    text-decoration: none
+
+
+
+/* 
+ * Nav items
+ */
+
+.uis-navbar-nav > .uis-navbar-nav-item > a
+    color: $navbar-nav-item-color
+
+/*
+ * Hover a
+ * Apply hover style also to focus state and if dropdown is opened   
+ */
+
+.uis-navbar-nav > .uis-navbar-nav-item:hover > a
+    color: $navbar-nav-item-hover-color
+
+/*
+ * Hover li
+ * Apply hover style also to focus state and if dropdown is opened    
+ */
+
+.uis-navbar-nav > .uis-navbar-nav-item
+    &:after
+        display: block
+        content: ""
+        border-bottom: solid 3px $global-primary-color
+        transform: scaleX(0)
+        transition: transform 250ms ease-in-out
+        transform-origin: 0% 50%
+
+    &:hover:after
+        transform: scaleX(1)
+        transform-origin: 0 50%
+
+/* OnClick*/
+.uis-navbar-nav > li > a:active
+    color: $navbar-nav-item-onclick-color
+
+/* Active */
+.uis-navbar-nav > li.active, .uis-navbar-nav > li.active > a,
+.uis-navbar-nav > li.uis-open, .uis-navbar-nav > li > a.uis-open
+    color: $navbar-nav-item-active-color!important
+
+    &:after
+        transform: scaleX(1)!important
+
+
+
+/* Toggle
+   ================================================== */
+
+.uis-navbar-toggle
+    color: $navbar-toggle-color
+    display: none
+
+
+.uis-navbar-toggle:hover,
+.uis-navbar-toggle:focus,
+.uis-navbar-toggle.uis-open
+    color: $navbar-toggle-hover-color
+    outline: none
+    text-decoration: none
+
+
+
+/* Style Modifiers
+   ================================================== */
+
+.uis-navbar-sticky
+    position: fixed
+    top: 0
+    z-index: $global-z-index
+
+
+
+/* Dropdown
+   ================================================== */
+
+/*
+ * Adopts `uk-dropdown`
+ * 1. Hide by default
+ * 2. Set position
+ * 3. Set a default width
+ * 4. Style
+ */
+
+.uis-navbar-dropdown
+    /* 1 */
+    display: none
+    /* 2 */
+    position: absolute
+    top: 84px
+    // left: 76.6563px
+    z-index: $navbar-dropdown-z-index
+    /* 3 */
+    box-sizing: border-box
+    width: $navbar-dropdown-width
+    /* 4 */
+    padding: $navbar-dropdown-padding
+    background: $navbar-dropdown-background
+    color: $navbar-dropdown-color
+    box-shadow: $navbar-dropdown-box-shadow
+    transition: display 1s ease-in-out
+
+.uis-navbar-dropdown-right
+    right: 0
+
+/* Show */
+.uis-navbar-dropdown.uis-open
+    display: block
+    transition: display 1s ease-in-out
+
+
+.uis-navbar-sidemenu
+    align-items: center
+    z-index: $global-z-index + 10
+
+/* Media Queries
+   ================================================== */
+@media only screen and (max-width: $breakpoint-medium)
+
+    .uis-navbar-toggle
+        display: flex
+        z-index: $global-z-index + 10
+
+    .uis-navbar-brand
+        position: absolute
+        width: 120px
+        margin: 0 auto
+        left: 0
+        right: 0
+
+    .uis-navbar-left, .uis-navbar-center,
+    .uis-navbar-right
+        display: none
+
+.uis-navbar-nav-item .sub-nav
+    top: -5px !important
+    left: 110px

@@ -1,0 +1,189 @@
+// Name:            Nav
+// Description:     Defines styles for list navigations
+//
+// Component:       `uis-nav`
+//
+// Sub-objects:     `uis-nav-header`
+//                  `uis-nav-divider`
+//                  `uis-nav-sub`
+//
+// Modifiers:       `uis-nav-parent-icon`
+//                  `uis-nav-default`
+//                  `uis-nav-primary`
+//                  `uis-nav-center`
+//
+// States:          `uis-active`
+//                  `uis-parent`
+//                  `uis-open`
+//                  `uis-touch`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$nav-item-padding-vertical:                      5px !default
+$nav-item-padding-horizontal:                    0 !default
+
+$nav-sublist-padding-vertical:                   5px !default
+$nav-sublist-padding-left:                       15px !default
+$nav-sublist-deeper-padding-left:                15px !default
+$nav-sublist-item-padding-vertical:              2px !default
+
+$nav-parent-icon-width:                          ($global-line-height * 1em) !default
+$nav-parent-icon-height:                         $nav-parent-icon-width !default
+$nav-parent-icon-color:                          $global-color !default
+
+$nav-header-padding-vertical:                    $nav-item-padding-vertical !default
+$nav-header-padding-horizontal:                  $nav-item-padding-horizontal !default
+$nav-header-font-size:                           $global-small-font-size !default
+$nav-header-text-transform:                      uppercase !default
+$nav-header-margin-top:                          $global-margin !default
+
+$nav-divider-margin-vertical:                    10px !default
+$nav-divider-margin-horizontal:                  0 !default
+
+$nav-default-item-color:                         $global-muted-color !default
+$nav-default-item-hover-color:                   $global-color !default
+$nav-default-item-active-color:                  $global-emphasis-color !default
+$nav-default-header-color:                       0.5px !default
+$nav-default-divider-border-width:               1px !default
+$nav-default-divider-border:                     #E5E5E5 !default
+$nav-default-sublist-item-color:                 $global-muted-color !default
+$nav-default-sublist-item-hover-color:           $global-color !default
+
+$nav-primary-item-font-size:                     $global-large-font-size !default
+$nav-primary-item-line-height:                   $global-line-height !default
+$nav-primary-item-color:                         $global-muted-color !default
+$nav-primary-item-hover-color:                   $global-color !default
+$nav-primary-item-active-color:                  $global-emphasis-color !default
+$nav-primary-header-color:                       $global-emphasis-color !default
+$nav-primary-divider-border-width:               $global-border-width !default
+$nav-primary-divider-border:                     $global-border !default
+$nav-primary-sublist-item-color:                 $global-muted-color !default
+$nav-primary-sublist-item-hover-color:           $global-color !default
+
+
+
+/* ==================================================
+    Component: Nav
+   ================================================== */
+
+/*
+ * Reset
+ * 1. Prepare lists
+ * 2. Prepare links
+ * 3. Remove default focus style
+ */
+
+/* 1 */
+.uis-nav,
+.uis-nav ul
+    margin: 0
+    padding: 0
+    list-style: none
+
+/* 2 */
+.uis-nav li 
+    margin: 14px 0px
+
+.uis-nav li > a
+    display: block
+    text-decoration: none
+
+/* 3 */
+.uis-nav li > a:focus
+    outline: none
+
+/*
+ * Items
+ * Must target `a` elements to exclude other elements (e.g. lists)
+ */
+.uis-nav > li > a
+    padding: $nav-item-padding-vertical $nav-item-padding-horizontal
+
+
+
+/* Header
+   ================================================== */
+
+.uis-nav-header
+    padding: $nav-header-padding-vertical $nav-header-padding-horizontal
+    text-transform: $nav-header-text-transform
+    font-size: $nav-header-font-size
+
+.uis-nav-header:not(:first-child)
+    margin-top: $nav-header-margin-top
+
+
+    
+/* Divider
+   ================================================== */
+
+.uis-nav-divider
+    margin: $nav-divider-margin-vertical $nav-divider-margin-horizontal
+
+
+
+/*
+ * Items    
+ */
+
+.uis-nav > li > a 
+    color: $nav-default-item-color
+    white-space: nowrap
+
+/* Hover + Focus */
+.uis-nav > li > a:hover,
+.uis-nav > li > a:focus
+    color: $nav-default-item-hover-color
+
+/* Active */
+.uis-nav > li.uis-active > a
+    color: $nav-default-item-active-color
+
+
+
+/*
+ * Header   
+ */
+
+.uis-nav > .uis-nav-header
+    color: $nav-default-header-color
+
+
+
+/*
+ * Divider    
+ */
+
+.uis-nav .uis-nav-divider
+    border-top: $nav-default-divider-border-width solid $nav-default-divider-border
+
+
+.uis-nav .uis-nav-item
+
+    &:after
+        display: block
+        content: ""
+        border-bottom: solid 3px $global-primary-color
+        transform: scaleX(0)
+        transition: transform 250ms ease-in-out
+        transform-origin: 0% 50%
+
+    &:hover:after
+        transform: scaleX(1)
+        transform-origin: 0 50%
+
+// .uis-nav .uis-nav-item:hover, .uis-nav .uis-nav-item:hover > a,
+// .uis-nav .uis-nav-item:focus, .uis-nav .uis-nav-item:focus > a
+// .uis-active, .uis-active > a
+//     color: $global-primary-color!important
+
+
+
+//     /* Active */
+// .uis-navbar-nav > li.active, .uis-navbar-nav > li.active > a,
+// .uis-navbar-nav > li.uis-open, .uis-navbar-nav > li > a.uis-open
+    

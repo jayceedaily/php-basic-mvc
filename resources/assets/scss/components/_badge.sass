@@ -1,0 +1,59 @@
+// Name:            Badge
+// Description:     Component to create notification badges
+//
+// Component:       `uis-badge`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$badge-size:                                     22px !default
+
+$badge-padding-vertical:                         4px !default
+$badge-padding-horizontal:                       10px !default
+
+$badge-padding-vertical-l:                         14px !default
+$badge-padding-horizontal-l:                       14px !default
+
+$badge-border-radius:                            0px !default
+$badge-background:                               $global-primary-background !default
+$badge-color:                                    $global-inverse-color !default
+$badge-font-size:                                1rem
+
+
+/* ========================================================================
+   Component: Badge
+ ========================================================================== */
+
+/*
+ * 1. Style
+ * 2. Center child vertically and horizontally
+ */
+
+.uis-badge
+    box-sizing: border-box
+    min-width: $badge-size
+    height: $badge-size
+    padding: $badge-padding-vertical $badge-padding-horizontal
+    border-radius: $badge-border-radius
+    vertical-align: middle
+    margin-left: 8px
+    /* 1 */
+    background: $badge-background
+    color: $badge-color
+    font-size: $badge-font-size
+    /* 2 */
+    display: inline-flex
+    justify-content: center
+    align-items: center
+
+.uis-badge-large
+	padding: $badge-padding-vertical-l $badge-padding-horizontal-l
+
+
+/* Style Modifiers
+   ================================================== */
+
++create-modifier(badge)

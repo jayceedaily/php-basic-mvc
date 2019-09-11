@@ -1,0 +1,134 @@
+// Name:            List
+// Description:     Styles for list
+//
+// Component:       `uis-list`
+//
+// Modifiers:       `uis-list-divider`
+//                  `uis-list-striped`
+//                  `uis-list-bullet`
+//                  `uis-list-large`
+//
+// ========================================================================
+
+// Variables
+// ========================================================================
+
+$list-margin-top:                           $global-small-margin !default
+
+$list-nested-padding-left:                  $global-gutter !default
+
+$list-divider-margin-top:                   $global-small-margin !default
+$list-divider-border-width:                 0.5px !default
+$list-divider-border:                       #E5E5E5 !default
+
+$list-striped-padding-vertical:             $global-small-margin !default
+$list-striped-padding-horizontal:           $global-small-margin !default
+$list-striped-background:                   $global-muted-background !default
+
+$list-bullet-width:                         ($global-line-height * 1em) !default
+$list-bullet-height:                        $list-bullet-width !default
+$list-bullet-margin-right:                  $global-small-margin
+$list-bullet-icon-color:                    $global-color
+
+$list-large-margin-top:                     $global-margin !default
+$list-large-divider-margin-top:             $global-margin !default
+$list-large-striped-padding-vertical:       $global-margin !default
+$list-large-striped-padding-horizontal:     $global-small-margin !default
+
+
+
+/* ==================================================
+    Component: List
+   ================================================== */  
+
+.uis-list
+    padding: 0
+    list-style: none
+
+/*
+ * Micro clearfix
+ */
+
+.uis-list > li::before,
+.uis-list > li::after
+    content: ""
+    display: table
+
+.uis-list > li::after
+    clear: both
+
+/*
+ * Remove margin from the last-child
+ */
+
+.uis-list > li > :last-child
+    margin-bottom: 0
+
+/*
+ * Nested lists
+ */
+
+.uis-list > ul
+    margin: 0
+    padding-left: $list-nested-padding-left
+    list-style: none
+
+/*
+ * Style
+ */
+
+.uis-list > li:nth-child(n+2),
+.uis-list > li > ul
+    margin-top: $list-margin-top
+
+
+
+/* Style Modifiers
+   ================================================== */
+
+/*
+ * Divider
+ */
+
+.uis-list-divider > li:nth-child(n+2)
+    margin-top: $list-divider-margin-top
+    padding-top: $list-divider-margin-top
+    border-top: $list-divider-border-width solid $list-divider-border
+
+/*
+ * Striped
+ */
+
+.uis-list-striped > li
+    padding: $list-striped-padding-vertical $list-striped-padding-horizontal
+
+.uis-list-striped > li:nth-of-type(odd)
+    background: $list-striped-background
+
+.uis-list-striped > li:nth-child(n+2)
+    margin-top: 0
+
+/*
+ * Bullet
+ */
+
+.uis-list-bullet > li
+    position: relative
+    padding-left: unquote('calc(#{$list-bullet-width} + #{$list-bullet-margin-right})')
+
+
+
+/* Size Modifier
+   ================================================== */
+
+.uis-list-large > li:nth-child(n+2),
+.uis-list-large > li > ul
+    margin-top: $list-large-margin-top
+
+/*
+ * Divider
+ */
+
+.uis-list-large.uk-list-divider > li:nth-child(n+2)
+    margin-top: $list-large-divider-margin-top
+    padding-top: $list-large-divider-margin-top

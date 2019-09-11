@@ -1,0 +1,333 @@
+// Name:            Print-preview
+// Description:     Component to create certificate preview for A4 Size
+//
+// Component:       `paper-*`
+//
+// Sub-objects:     `uis-accordion-title`
+//                  `uis-accordion-content`
+//
+// States:          `uis-open`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$paper-height:                      1122.519685px !default
+$paper-width:                       793.7007874px !default
+$paper-padding:                     37.79527559055118px !default
+
+$certificate-content:               ($paper-width - 124.8px) !default
+$certificate-title-font:            Palatino Linotype !default
+$certificate-description-font:      Calibri !default
+
+
+/* ==================================================
+  Component: Paper
+ ================================================== */
+
+
+
+/*
+ * 1. Set position
+ * 2. Hide overflow in the paper
+ * 3. Set the size of the paper
+ * 4. Add gutter
+ * 5. Set the text align
+ */
+.paper
+    /* 1 */
+    position: relative
+    margin: 20px auto
+    /* 2 */
+    overflow: hidden
+    /* 3 */
+    width: $paper-width
+    height: $paper-height
+    /* 4 */
+    padding: $paper-padding
+    /* 5 */
+    text-align: center
+
+    // For previewing only
+    border: 0.235px solid #E5E5E5
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12)
+    background-color: #EAF2F5
+
+/* Hide in print */
+@media print
+    .paper
+        // background-color: transparent !important
+        box-shadow: none !important
+        border: none !important
+        padding: 0 !important
+        marign: 0 !important
+        page-break-after: always !important;
+    
+
+
+/* Paper Border
+   ================================================== */
+
+.paper-border-inside
+    border: 7.5590551181px solid #000000
+    height: 100%
+
+@media print
+    .paper-border-inside
+        border: 0 !important
+
+
+
+/* Header
+   ================================================== */
+
+.preview-paper-header
+    text-align: center
+    color: #000000
+    margin-top: 18.897637795px
+
+.preview-paper-header .company-name
+    font-size: 18.897637795px
+    font-weight: bold
+    color: #000000
+    font-family: 'Times New Roman', Times, serif
+    margin-bottom: 0px
+
+.preview-paper-header .company-address
+    margin: 0px
+    font-family: 'Times New Roman', Times, serif
+
+@media print
+    .preview-paper-header
+        display: none
+
+
+/* Certificate Number
+   ================================================== */
+
+.certificate-number
+    position: absolute
+    top: 185px
+    right: 66px
+
+.certificate-number > p
+    font-family: $certificate-description-font
+    font-size: 20px
+    color: #000000
+    margin: 0
+
+/* Content
+   ================================================== */
+
+.certificate-content
+    width: $certificate-content
+    height: 100% 
+    overflow: hidden
+
+    position: absolute
+    top: 366px
+    left: 0
+    right: 0
+    margin: 0 auto
+
+
+.certificate-content .title
+    font-size: 36px
+    font-family: $certificate-title-font
+    font-weight: bold
+    color: #000000
+    margin-bottom: 0px
+    margin-top: 0px
+
+.certificate-content .presentation-line
+    font-family: $certificate-description-font
+    font-size: 20px
+    color: #000000
+    margin-top: 25px
+    margin-bottom: 0px
+
+.certificate-content .recipient
+    display: inline-block
+    clear: both
+    font-family: $certificate-title-font
+    font-size: 32px
+    color: #000000
+    line-height: 40px
+    
+    border-bottom: 2px solid #000000
+
+    margin-top: 11px
+    margin-bottom: 0px
+
+.certificate-content .description
+    font-family: $certificate-description-font
+    font-size: 20px
+    color: #000000
+    margin-top: 16px
+    margin-bottom: -14px
+
+.certificate-content .course
+    font-family: $certificate-title-font
+    font-size: 28px
+    line-height: 32px
+    font-weight: 800
+    color: #000000
+    marign-top: 12px
+    margin-bottom: 2px
+
+.certificate-content .note
+    font-family: $certificate-description-font
+    font-size: 18px
+    color: #000000
+    font-style: italic
+    margin-top: 0px
+
+.certificate-content .date-conducted,
+.certificate-content .date-issued
+    font-family: $certificate-description-font
+    font-size: 20px
+    font-weight: 300
+    color: #000000
+
+    margin: 10px 0px
+
+
+/* Instructor
+   ================================================== */
+.certificate-instructor
+    display: flex
+    flex-direction: row
+    align-items: flex-start
+    justify-content: space-between
+    margin-top: 160px
+    position: relative
+    text-align: left
+
+.instructor-name
+    padding-right: 30px
+    border-top: 1px solid #000000
+    padding-top: 4px
+
+
+.certificate-instructor .instructor-name p,
+.certificate-instructor .instructor-name span
+    font-family: $certificate-title-font
+    font-size: 20px
+    color: #000000
+    margin: 0
+    text-align: left !important
+
+.certificate-instructor .instructor-name p
+    margin-top: 6px
+    margin-bottom: -4px
+    
+
+
+/* Watermark
+   ================================================== */
+.header-watermark
+    position: absolute
+    top: 60px
+    left: 60px
+
+
+.footer-watermark
+    position: absolute
+    bottom: -370px
+    right: -160px
+
+    height: 644px
+    width: 700px
+    opacity: 0.3
+
+
+@media print
+    .header-watermark,
+    .footer-watermark
+        display: none !important
+
+    .print-preview-back-button
+        display: none
+
+
+
+/* Loader
+   ================================================== */
+
+body
+    overflow: hidden
+
+.print-preview-loader:before
+    content: ""
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    background-color: rgba(0, 0, 0, 0.5)
+    z-index: 1200!important
+
+.print-preview-loader > div
+    display: none
+    position: absolute
+    top: 50%
+    left: 0
+    bottom: 0
+    right: 0
+    margin: 0 auto
+    text-align: center
+    z-index: 1400!important
+    color: #FFFFFF
+
+.print-preview-loader > div > p
+    font-family: Open Sans
+    font-size: 1.4rem
+    margin-top: 8px
+
+.print-preview-loader > div
+    display: block
+
+.paper
+    transition: all 0.3s linear
+    -webkit-filter: blur(5px)
+    filter: blur(5px)
+
+
+/* Animation Modifier
+ ========================================================================== */
+
+.rotate
+    font-size: 2rem
+    display: inline-block
+    animation: rotating 1s linear infinite
+
+@keyframes rotating
+    from
+        transform: rotate(0deg)
+
+    to
+        transform: rotate(360deg)
+
+.paper-back-content
+    padding: 60px
+
+.paper-back-content > p
+    margin: 0
+
+.paper-back-content > ul
+    margin: 0
+
+.paper-back-content > ul,
+.paper-back-content > ul li,
+.paper-back-content > .course-description
+    font-family: Roboto, system-ui, sans-serif;
+    font-weight: 400
+
+.paper-back-content > .course-title
+    font-family: 'Times New Roman', Times, serif
+    font-weight: 600
+
+.paper-back-content > .course-description
+    margin-bottom: 20px

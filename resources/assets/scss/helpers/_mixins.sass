@@ -1,0 +1,12 @@
+=create-modifier($component)
+
+    $modifiers: default, primary, secondary, success, warning, danger
+    
+    $backgroundColors: $global-muted-background, $global-primary-background, $global-secondary-background, $global-success-background, $global-warning-background, $global-danger-background
+
+    $fontColors: $global-emphasis-color, $global-inverse-color, $global-inverse-color, $global-inverse-color, $global-inverse-color, $global-inverse-color
+
+    @for $i from 1 through length($modifiers)
+        .uis-#{$component}-#{nth($modifiers, $i)}
+            background-color: nth($backgroundColors, $i)
+            color: nth($fontColors, $i)

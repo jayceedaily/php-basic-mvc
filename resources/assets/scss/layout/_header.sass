@@ -1,0 +1,70 @@
+// Name:            Header
+// Description:     Styles for header
+//
+// Component:       `uis-header`
+//
+// Sub-objects:     `uis-header-item`
+//                  `uis-nav-divider`
+//
+// Modifiers:       `uis-nav-parent-icon`
+//                  `uis-nav-default`
+//                  `uis-nav-primary`
+//                  `uis-nav-center`
+//
+// States:          `uis-active`
+//                  `uis-parent`
+//                  `uis-open`
+//                  `uis-touch`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$header-padding-horizontal:                  0px !default
+$header-padding-vertical:                    $global-gutter !default
+
+
+
+/* ==================================================
+    Component: Header
+   ================================================== */
+
+/*
+ * 1. Add gutter
+ * 2. Setup display
+ */
+
+.uis-header
+    /* 1 */
+    padding: $header-padding-vertical $header-padding-horizontal
+    /* 2 */
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+.uis-header > .uis-header-item
+    flex: 1
+
+.uis-header .uis-header-help
+    color: $global-muted-color
+    margin-left: 4px
+    transition: color 0.5s linear
+
+.uis-header .uis-header-help:hover
+    color: $global-emphasis-color
+    cursor: help
+
+.uis-header p.uis-text-lead,
+.uis-header p.uis-text-lead i.li
+    display: inline-block
+    vertical-align: middle
+
+.uis-header span.uis-text-meta
+    display: block
+
+.tooltip 
+    background-color: #242424 !important
+    color: $global-inverse-color !important
+    padding: 4px 8px !important

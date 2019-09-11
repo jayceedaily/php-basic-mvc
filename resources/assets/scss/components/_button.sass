@@ -1,0 +1,608 @@
+//  ==================================================
+//  Name:               Button
+//  Description:        Styles for buttons
+//
+//  Component:          `uis-button-*` 
+//
+// Sub-components:      `uis-button-group`
+//                      `uis-floating-button`
+//
+//  Modifiers:          `uis-button-default`
+//                      `uis-button-primary`
+//                      `uis-button-secondary`
+//                      `uis-button-warning`
+//                      `uis-button-danger`
+//                      `uis-button-outline-primary`
+//                      `uis-button-outline-secondary`
+//                      `uis-button-outline-warning`
+//                      `uis-button-outline-danger`
+//                      
+//
+//  States:             `active`
+//  ==================================================
+
+
+
+//  ==================================================
+//  Variables
+//  ==================================================
+
+$button-line-height:                        $global-control-height !default
+$button-small-line-height:                  $global-control-small-height !default
+$button-large-line-height:                  $global-control-large-height !default
+
+$button-font-size:                          $global-font-size !default
+$button-small-font-size:                    $global-small-font-size !default
+$button-large-font-size:                    $global-large-font-size !default
+
+$button-padding-horizontal:                 $global-gutter !default
+$button-small-padding-horizontal:           $global-small-gutter !default
+$button-large-padding-horizontal:           $global-large-gutter !default
+
+$button-border-radius:                      0px !default
+$button-border-width:                       $global-border-width !default
+$button-border-color:                       $global-border !default
+
+// Default Button
+$button-default-background:                 $global-muted-background !default
+$button-default-color:                      $global-emphasis-color !default
+$button-default-hover-background:           darken($button-default-background, 5%) !default
+$button-default-hover-color:                $global-emphasis-color !default
+$button-default-active-background:          darken($button-default-background, 10%) !default
+$button-default-active-color:               $global-emphasis-color !default
+
+// Primary Button
+$button-primary-background:                 $global-primary-background !default
+$button-primary-color:                      $global-inverse-color !default
+$button-primary-hover-background:           darken($button-primary-background, 5%) !default
+$button-primary-hover-color:                $global-inverse-color !default
+$button-primary-active-background:          darken($button-primary-background, 10%) !default
+$button-primary-active-color:               $global-inverse-color !default
+
+// Secondary Button
+$button-secondary-background:               $global-secondary-background !default
+$button-secondary-color:                    $global-inverse-color !default
+$button-secondary-hover-background:         darken($button-secondary-background, 5%) !default
+$button-secondary-hover-color:              $global-inverse-color !default
+$button-secondary-active-background:        darken($button-secondary-background, 10%) !default
+$button-secondary-active-color:             $global-inverse-color !default
+
+// Success Button
+$button-success-background:                 $global-success-background !default
+$button-success-color:                      $global-inverse-color !default
+$button-success-hover-background:           darken($button-success-background, 5%) !default
+$button-success-hover-color:                $global-inverse-color !default
+$button-success-active-background:          darken($button-success-background, 10%) !default
+$button-success-active-color:               $global-inverse-color !default
+
+// Warning Button
+$button-warning-background:                 $global-warning-background !default
+$button-warning-color:                      $global-inverse-color !default
+$button-warning-hover-background:           darken($button-warning-background, 5%) !default
+$button-warning-hover-color:                $global-inverse-color !default
+$button-warning-active-background:          darken($button-warning-background, 10%) !default
+$button-warning-active-color:               $global-inverse-color !default
+
+// Danger Button
+$button-danger-background:                  $global-danger-background !default
+$button-danger-color:                       $global-inverse-color !default
+$button-danger-hover-background:            darken($button-danger-background, 5%) !default
+$button-danger-hover-color:                 $global-inverse-color !default
+$button-danger-active-background:           darken($button-danger-background, 10%) !default
+$button-danger-active-color:                $global-inverse-color !default
+
+// Primary Outlined Button
+$button-outlined-primary-background:        $global-transparent-background !default
+$button-outlined-primary-color:             $global-primary-color !default
+$button-outlined-primary-hover-background:  darken($global-primary-background, 5%) !default
+$button-outlined-primary-hover-color:       $global-inverse-color !default
+$button-outlined-primary-active-background: darken($global-primary-background, 10%) !default
+$button-outlined-primary-active-color:      $global-inverse-color !default
+
+$button-disabled-background:                $global-muted-background !default
+$button-disabled-color:                     $global-muted-color !default
+
+$button-text-line-height:                   $global-line-height !default
+$button-text-color:                         $global-muted-color !default
+$button-text-hover-color:                   $global-color !default
+$button-text-disabled-color:                $global-muted-color !default
+
+$button-link-color:                         $global-link-color !default
+$button-link-hover-color:                   $global-link-hover-color !default
+$button-link-line-height:                   $global-line-height !default
+$button-link-hover-text-decoration:         underline !default
+$button-link-disabled-color:                $global-muted-color !default
+
+// Default Link Button
+$button-link-default-color:                 $global-muted-color !default
+$button-link-default-hover-color:           darken($button-link-default-color, 5%) !default
+$button-link-default-active-color:          darken($button-link-default-color, 10%) !default
+
+// Primary Link Button
+$button-link-primary-color:                 $global-primary-color !default
+$button-link-primary-hover-color:           darken($button-link-primary-color, 5%) !default
+$button-link-primary-active-color:          darken($button-link-primary-color, 10%) !default
+
+// Secondary Link Button
+$button-link-secondary-color:                 $global-secondary-color !default
+$button-link-secondary-hover-color:           darken($button-link-secondary-color, 5%) !default
+$button-link-secondary-active-color:          darken($button-link-secondary-color, 10%) !default
+
+// Success Link Button
+$button-link-success-color:                 $global-success-color !default
+$button-link-success-hover-color:           darken($button-link-success-color, 5%) !default
+$button-link-success-active-color:          darken($button-link-success-color, 10%) !default
+
+// Warning Link Button
+$button-link-warning-color:                 $global-warning-color !default
+$button-link-warning-hover-color:           darken($button-link-warning-color, 5%) !default
+$button-link-warning-active-color:          darken($button-link-warning-color, 10%) !default
+
+// Danger Link Button
+$button-link-danger-color:                 $global-danger-color !default
+$button-link-danger-hover-color:           darken($button-link-danger-color, 5%) !default
+$button-link-danger-active-color:          darken($button-link-danger-color, 10%) !default
+
+
+/*
+ * 1. Remove margins in Chrome, Safari, and Opera.
+ * 2. Remove borders for `button`.
+ * 3. Remove border-radius in Chrome.
+ * 4. Address `overflow` set to `hidden` in IE.
+ * 5. Correct `font` properties and `color` not being inherited for `button`.
+ * 6. Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 7. Style
+ * 8. `line-height` is used to create a height because it also centers the text vertically for `a` elements.
+ *      Better would be to use height and flexbox to center the text vertically but flexb ox doesn't work in Firefox on `button` elements.
+ * 9. Align text if button has a width.
+ * 10. Require for `a`.
+ */
+
+.uis-button
+    /* 1 */
+    margin: 0
+    /* 2 */
+    border: none
+    /* 3 */
+    border-radius: $button-border-radius
+    /* 4 */
+    overflow: visible
+    /* 5 */
+    font: inherit
+    color: inherit
+    /* 6 */
+    text-transform: none
+    /* 7 */
+    display: inline-block
+    box-sizing: border-box
+    padding: 0 $button-padding-horizontal
+    vertical-align: middle
+    font-size: $button-font-size
+    /* 8 */
+    line-height: $button-line-height
+    /* 9 */
+    text-align: center
+    /* 10 */
+    text-decoration: none
+    transition: all 0.3s ease
+
+.uis-button:not(:disabled)
+    cursor: pointer
+
+/*
+ * Remove the inner border and padding in Firefox.
+ */
+
+.uis-button::-moz-focus-inner
+    border: 0
+    padding: 0
+
+/* Hover */
+.uis-button:hover
+    /* 8 */
+    text-decoration: none
+
+/* Focus */
+.uis-button:focus
+    outline: none
+
+
+
+/* Style modifiers
+   ================================================== */
+
+/*
+ * Default
+ */
+
+.uis-button-default
+    background-color: $button-default-background
+    color: $button-default-color
+    border: 1px solid #E5E5E5
+
+/* Hover + Focus */
+.uis-button-default:hover,
+.uis-button-default:focus
+    background-color: $button-default-hover-background
+    color: $button-default-hover-color
+
+/* Onclick + Active */
+.uis-button-default:active,
+.uis-button-default.uis-active
+    background-color: $button-default-active-background
+    color: $button-default-active-color
+
+
+
+/*
+ * Primary
+ */
+
+.uis-button-primary
+    background-color: $button-primary-background
+    color: $button-primary-hover-color
+    border: 1px solid $button-primary-background
+
+/* Hover + Focus */
+.uis-button-primary:hover,
+.uis-button-primary:focus
+    background-color: $button-primary-hover-background
+    color: $button-primary-active-color
+
+/* Onclick + Active */
+.uis-button-primary:active,
+.uis-button-primary.uis-active
+    background-color: $button-primary-active-background
+    color: $button-primary-active-color
+
+
+
+/*
+ * Secondary
+ */
+
+.uis-button-secondary
+    background-color: $button-secondary-background
+    color: $button-secondary-hover-color
+    border: $button-secondary-background
+
+/* Hover + Focus */
+.uis-button-secondary:hover,
+.uis-button-secondary:focus
+    background-color: $button-secondary-hover-background
+    color: $button-secondary-active-color
+
+/* Onclick + Active */
+.uis-button-secondary:active,
+.uis-button-secondary.uis-active
+    background-color: $button-secondary-active-background
+    color: $button-secondary-active-color
+
+
+
+/*
+ * Success
+ */
+
+.uis-button-success
+    background-color: $button-success-background
+    color: $button-success-hover-color
+    border: $button-success-background
+
+/* Hover + Focus */
+.uis-button-success:hover,
+.uis-button-success:focus
+    background-color: $button-success-hover-background
+    color: $button-success-active-color
+
+/* Onclick + Active */
+.uis-button-success:active,
+.uis-button-success.uis-active
+    background-color: $button-success-active-background
+    color: $button-success-active-color
+
+
+
+/*
+ * Warning
+ */
+
+.uis-button-warning
+    background-color: $button-warning-background
+    color: $button-warning-hover-color
+    border: $button-warning-background
+
+/* Hover + Focus */
+.uis-button-warning:hover,
+.uis-button-warning:focus
+    background-color: $button-warning-hover-background
+    color: $button-warning-active-color
+
+/* Onclick + Active */
+.uis-button-warning:active,
+.uis-button-warning.uis-active
+    background-color: $button-warning-active-background
+    color: $button-warning-active-color
+
+
+
+/*
+ * Danger
+ */
+
+.uis-button-danger
+    background-color: $button-danger-background
+    color: $button-danger-hover-color
+    border: $button-danger-background
+
+/* Hover + Focus */
+.uis-button-danger:hover,
+.uis-button-danger:focus
+    background-color: $button-danger-hover-background
+    color: $button-danger-active-color
+
+/* Onclick + Active */
+.uis-button-danger:active,
+.uis-button-danger.uis-active
+    background-color: $button-danger-active-background
+    color: $button-danger-active-color
+
+
+
+/* Outlined Style modifiers
+   ================================================== */
+
+/*
+ * Primary
+ */
+
+.uis-button-outline-primary
+    background: none
+    border: 2px solid $button-primary-background
+    color: $global-primary-color
+
+/* Hover + Focus */
+.uis-button-outline-primary:hover,
+.uis-button-outline-primary:focus
+    background-color: $button-primary-background
+    color: $button-primary-color
+
+/* Onclick + Active */
+.uis-button-outline-primary:active,
+.uis-button-outline-primary.uis-active
+    background-color: $button-primary-active-background
+    color: $button-primary-active-color
+
+
+
+/*
+ * Secondary
+ */
+
+.uis-button-outline-secondary
+    background: none
+    border: 2px solid $button-secondary-background
+    color: $global-secondary-color
+
+/* Hover + Focus */
+.uis-button-secondary:hover,
+.uis-button-secondary:focus
+    background-color: $button-secondary-hover-background
+    color: $button-secondary-active-color
+
+/* Onclick + Active */
+.uis-button-secondary:active,
+.uis-button-secondary.uis-active
+    background-color: $button-secondary-active-background
+    color: $button-secondary-active-color
+
+
+
+/*
+ * Success
+ */
+
+.uis-button-outline-success
+    background: none
+    border: 2px solid $button-success-background
+    color: $global-success-color
+
+/* Hover + Focus */
+.uis-button-success:hover,
+.uis-button-success:focus
+    background-color: $button-success-hover-background
+    color: $button-success-active-color
+
+/* Onclick + Active */
+.uis-button-success:active,
+.uis-button-success.uis-active
+    background-color: $button-success-active-background
+    color: $button-success-active-color
+
+
+
+/*
+ * Warning
+ */
+
+.uis-button-outline-warning
+    background: none
+    border: 2px solid $button-warning-background
+    color: $global-warning-color
+
+/* Hover + Focus */
+.uis-button-warning:hover,
+.uis-button-warning:focus
+    background-color: $button-warning-hover-background
+    color: $button-warning-active-color
+
+/* Onclick + Active */
+.uis-button-warning:active,
+.uis-button-warning.uis-active
+    background-color: $button-warning-active-background
+    color: $button-warning-active-color
+
+
+
+/*
+ * Danger
+ */
+
+.uis-button-outline-danger
+    background: none
+    border: 2px solid $button-danger-background
+    color: $global-danger-color
+
+/* Hover + Focus */
+.uis-button-danger:hover,
+.uis-button-danger:focus
+    background-color: $button-danger-hover-background
+    color: $button-danger-active-color
+
+/* Onclick + Active */
+.uis-button-danger:active,
+.uis-button-danger.uis-active
+    background-color: $button-danger-active-background
+    color: $button-danger-active-color
+
+
+/*
+ * Disabled
+ * The same for all style modifiers
+ */
+
+.uis-button-default:disabled,
+.uis-button-primary:disabled,
+.uis-button-secondary:disabled,
+.uis-button-danger:disabled
+    background-color: $button-disabled-background
+    color: $button-disabled-color
+    border-color: darken($button-disabled-background, 10%)
+
+
+
+/* Size modifiers
+   ================================================== */
+
+.uis-button-small
+    padding: 0 $button-small-padding-horizontal
+    line-height: $button-small-line-height
+    font-size: $button-small-font-size
+
+
+.uis-button-large
+    padding: 0 $button-large-padding-horizontal
+    line-height: $button-large-line-height
+    font-size: $button-large-font-size
+
+.uis-button-wide
+    padding: 0 $button-large-padding-horizontal
+
+
+
+/* Text modifiers
+   ================================================== */
+
+/*
+ * Text
+ * 1. Reset
+ * 2. Style
+ */
+
+.uis-button-text
+    /* 1 */
+    padding: 0
+    line-height: $button-text-line-height
+    background: none
+    /* 2 */
+    color: $button-text-color
+
+/* Hover + Focus */
+.uis-button-text:hover,
+.uis-button-text:focus
+    color: $button-text-hover-color
+
+/* Disabled */
+.uis-button-text:disabled
+    color: $button-text-disabled-color
+
+
+
+/* Link modifiers
+   ================================================== */
+
+/*
+ * Link
+ * 1. Reset
+ * 2. Style
+ */
+
+
+.uis-button-link
+    /* 1 */
+    padding: 0
+    line-height: $button-link-line-height
+    background: none
+    /* 2 */
+    color: $button-link-color
+
+/* Hover + Focus */
+.uis-button-link:hover,
+.uis-button-link:focus
+    color: $button-link-hover-color
+    text-decoration: $button-link-hover-text-decoration
+
+/* Disabled */
+.uis-button-link:disabled,
+    color: $button-link-disabled-color
+    text-decoration: none
+
+
+
+/* Group
+   ================================================== */
+
+/*
+ * 1. Using `flex` instead of `inline-block` to prevent whitespacec between child elements
+ * 2. Behave like button
+ * 3. Create position context
+ */
+
+.uis-button-group
+    /* 1 */
+    display: inline-flex
+    /* 2 */
+    vertical-align: middle
+    /* 3 */
+    position: relative
+
+
+
+/* Floating
+   ================================================== */
+
+/*
+ * Floating Button
+ * 1. set position
+ * 2. set size
+ * 3. Style
+ */
+
+.uis-floating-button
+    /* 1 */
+    position: fixed
+    right: 24px
+    bottom: 24px
+    /* 2 */
+    height: 60px
+    width: 60px
+    /* 3 */
+    background-color: $global-primary-background
+    border: none
+    border-radius: 50%
+    color: $global-inverse-color
+    z-index: $global-z-index + 10
+    text-align: center
+    line-height: 60px
+    box-shadow: $global-medium-box-shadow
+    outline: none
